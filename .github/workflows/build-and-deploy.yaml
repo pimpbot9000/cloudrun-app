@@ -26,3 +26,5 @@ jobs:
       - name: build frontend
         run: |
           cd frontend && yarn install && yarn run build-and-copy
+      - name: List files
+        run: ls
