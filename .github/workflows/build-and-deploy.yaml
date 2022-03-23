@@ -24,7 +24,8 @@ jobs:
         with:
           node-version: 14.x
       - name: build frontend
-        run: |
-          cd frontend && yarn install && yarn run build-and-copy
+        working-directory: ./frontend
+        run: yarn install && yarn run build-and-copy
       - name: List files
-        run: cd backend && ls
+        working-directory: ./backend
+        run: ls
