@@ -19,6 +19,10 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
       - name: build frontend
         run: |
           cd frontend && yarn run build-and-copy
