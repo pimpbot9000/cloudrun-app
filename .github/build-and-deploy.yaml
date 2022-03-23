@@ -1,0 +1,23 @@
+name: Build and deploy
+on:
+  push:
+    branches: [ master ]
+
+env:
+  #PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+  #IMAGE_NAME: helloworld
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }
+      - name: build frontend
+        run: |
+          cd frontend && yarn run build-and-copy
