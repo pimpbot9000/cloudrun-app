@@ -19,7 +19,7 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Use Node.js 14.x
+      - name: Use Node.js 14.x # is this needed?
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
@@ -27,4 +27,4 @@ jobs:
         run: |
           cd frontend && yarn install && yarn run build-and-copy
       - name: List files
-        run: ls
+        run: cd backend && ls
