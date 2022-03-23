@@ -25,4 +25,4 @@ jobs:
           node-version: 14.x
       - name: build frontend
         run: |
-          cd frontend && yarn run build-and-copy
+          cd frontend && yarn install && yarn run build-and-copy
