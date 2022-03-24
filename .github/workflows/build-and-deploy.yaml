@@ -12,54 +12,47 @@ jobs:
   build-frontend:
     name: Build frontend
     runs-on: ubuntu-latest
-
-    steps: 
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - name: Use Node.js 14.x # is this needed?
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14.x
-      - name: build frontend
-        working-directory: ./frontend
-        run: yarn install && yarn run build-and-copy
-      - name: List files
-        working-directory: ./backend
-        run: ls
-
-  build:
-    name: Build backend-container
-    runs-on: ubuntu-latest
-    needs: [ build-frontend ]
-
     permissions:
       contents: 'read'
       id-token: 'write'
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+    steps: 
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+          
+      - name: Use Node.js 14.x # is this needed?
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
 
-    - id: 'auth'
-      uses: 'google-github-actions/auth@v0'
-      with:
-        credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-    
-    - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@v0
+      - name: build frontend
+        working-directory: ./frontend
+        run: yarn install && yarn run build-and-copy
 
-    - name: ls
-      working-directory: ./backend
-      run: ls
+      - name: List files
+        working-directory: ./backend
+        run: ls
+
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
       
-    - name: Build
-      working-directory: ./backend
-      run: |-
-        gcloud builds submit \
-          --quiet \
-          --tag "eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
+
+      - name: ls
+        working-directory: ./backend
+        run: ls
+        
+      - name: Build
+        working-directory: ./backend
+        run: |-
+          gcloud builds submit \
+            --quiet \
+            --tag "eu.gcr.io/$PROJECT_ID/$SERVICE_NAME:$GITHUB_SHA"
     # Cloud run admin, Cloud build service account, viewer, storage admin, service account user
