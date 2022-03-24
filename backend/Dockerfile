@@ -1,6 +1,7 @@
 FROM node:latest
 
 WORKDIR /usr/src/app
+COPY public public
 COPY index.js index.js
 COPY package.json package.json
 COPY src src
