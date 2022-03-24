@@ -20,19 +20,6 @@ jobs:
     steps: 
       - name: Check out repository code
         uses: actions/checkout@v3
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-          
-      - name: Authenticate Cloud SDK
-        uses: 'google-github-actions/auth@v0'
-        with:
-          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-          project_id: '${{ secrets.GCP_PROJECT_ID }}'
-      
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v0
 
       - name: Use Node.js 14.x # is this needed?
         uses: actions/setup-node@v1
@@ -43,17 +30,17 @@ jobs:
         working-directory: ./frontend
         run: yarn install && yarn run build-and-copy
 
-      - name: List files
-        working-directory: ./backend
-        run: ls
-
+      - name: Authenticate Cloud SDK
+        uses: 'google-github-actions/auth@v0'
+        with:
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+          project_id: '${{ secrets.GCP_PROJECT_ID }}'
       
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
 
-      - name: ls
+      - name: Build and push to registry
         working-directory: ./backend
-        run: ls
-        
-      - name: Build
-        #working-directory: ./backend
-        run: cd backend && ls && gcloud builds submit --quiet --tag "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
-    # Cloud run admin, Cloud build service account, viewer, storage admin, service account user
+        run: gcloud builds submit --quiet --tag "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
+
+# GCP service account uses: Cloud run admin, Cloud build service account, viewer, storage admin, service account user
