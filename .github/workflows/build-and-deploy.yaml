@@ -42,7 +42,7 @@ jobs:
         uses: 'google-github-actions/auth@v0'
         with:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
-          project_id: '$PROJECT_ID'
+          project_id: '${{ secrets.GCP_PROJECT_ID }}'
       
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0
@@ -56,5 +56,5 @@ jobs:
         run: |-
           gcloud builds submit \
             --quiet \
-            --tag "eu.gcr.io/gybsyregistry/$IMAGE_NAME:latest"
+            --tag "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
     # Cloud run admin, Cloud build service account, viewer, storage admin, service account user
