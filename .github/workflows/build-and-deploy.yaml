@@ -56,5 +56,5 @@ jobs:
         run: |-
           gcloud builds submit \
             --quiet \
-            --tag "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
+            --tag "eu.gcr.io/gybsyregistry/$IMAGE_NAME:latest"
     # Cloud run admin, Cloud build service account, viewer, storage admin, service account user
