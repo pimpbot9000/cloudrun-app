@@ -30,6 +30,7 @@ jobs:
       - name: List files
         working-directory: ./backend
         run: ls
+
   build:
     name: Build backend-container
     runs-on: ubuntu-latest
@@ -52,6 +53,7 @@ jobs:
       uses: google-github-actions/setup-gcloud@v0
 
     - name: Build
+      working-directory: ./backend
       run: |-
         gcloud builds submit \
           --quiet \
