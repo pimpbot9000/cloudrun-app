@@ -52,6 +52,6 @@ jobs:
         run: ls
         
       - name: Build
-        working-directory: ./backend
-        run: ls && gcloud builds submit --quiet --tag "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
+        #working-directory: ./backend
+        run: cd backend && ls && gcloud builds submit --quiet --tag "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
     # Cloud run admin, Cloud build service account, viewer, storage admin, service account user
