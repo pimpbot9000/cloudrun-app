@@ -5,3 +5,7 @@ variable "project_id" {
 variable "image_name" {
   default = "gybsyregistry"
 }
+
+variable "region" {
+  default="europe-west6"
+}
