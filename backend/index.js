@@ -23,5 +23,7 @@ if (process.env.SERVE_STATIC === "true"){
 app.use(cors())
 app.use(express.json())
 //app.use('/api/v1/', personsRouter)
+console.log("Hello world, printing envs!")
+console.log(process.env)
 app.use('/health/', healthRouter)
 app.listen(PORT, () => console.log("Server is listening to port", PORT))
