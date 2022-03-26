@@ -44,6 +44,6 @@ jobs:
         run: gcloud builds submit --quiet --tag "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
 # copy peistattu känässä:      
       - name: Deploy
-        run: gcloud run deploy app --platform "managed" --image "eu.gcr.io/$PROJECT_ID/helloworld:latest" --region "us-central1"
+        run: gcloud run deploy app --platform "managed" --image "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest" --region "europe-west6"
 
 # GCP service account uses: Cloud run admin, Cloud build service account, viewer, storage admin, service account user
