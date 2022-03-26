@@ -19,20 +19,23 @@ module.exports = {
       directory: 'src/db/migrations'
     }
   },
-  /*
+  
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      port: 5432,
+      host: 'gybsyregister:europe-west6:main-instance2',
+      database: 'gybsyregister',
+      user:     'swordfish',
+      password: 'swordfish'
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'knex_migrations',
+      directory: 'src/db/migrations'
     }
-  }*/
+  },
 };

@@ -3,12 +3,12 @@ const path = require("path")
 const express = require('express')
 const cors = require('cors')
 const app = express()
-//const personsRouter = require('./src/routes/persons')
+const personsRouter = require('./src/routes/persons')
 const healthRouter = require('./src/routes/health')
-//const db = require('./src/db/db')
+const db = require('./src/db/db')
 
 // run migrations when the app starts
-//db.migrate.latest()
+db.migrate.latest()
 
 const PORT = process.env.PORT || 8080
 
@@ -22,7 +22,7 @@ if (process.env.SERVE_STATIC === "true"){
 
 app.use(cors())
 app.use(express.json())
-//app.use('/api/v1/', personsRouter)
+app.use('/api/v1/', personsRouter)
 console.log("Hello world, printing envs!")
 console.log(process.env)
 app.use('/health/', healthRouter)
