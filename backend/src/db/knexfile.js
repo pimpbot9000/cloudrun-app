@@ -26,7 +26,7 @@ module.exports = {
       host: '/cloudsql/gybsyregister:europe-west6:main-instance2',
       database: 'gybsyregister',
       user:     'swordfish',
-      password: 'swordfish'
+      password: process.env.DB_PASSWD
     },
     pool: {
       min: 2,
