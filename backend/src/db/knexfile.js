@@ -23,8 +23,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      port: 5432,
-      host: 'gybsyregister:europe-west6:main-instance2',
+      socketpath: '/cloudsql/gybsyregister:europe-west6:main-instance2',
       database: 'gybsyregister',
       user:     'swordfish',
       password: 'swordfish'
