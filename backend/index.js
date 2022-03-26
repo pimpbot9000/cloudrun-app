@@ -3,7 +3,7 @@ const path = require("path")
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const personsRouter = require('./src/routes/persons')
+//const personsRouter = require('./src/routes/persons')
 const healthRouter = require('./src/routes/health')
 //const db = require('./src/db/db')
 

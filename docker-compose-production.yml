@@ -6,7 +6,7 @@ services:
       context: ./backend
     command: yarn dev
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
       - SERVE_STATIC=true
       - PORT=8080
     ports: 
