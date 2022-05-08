@@ -10,7 +10,7 @@ env:
 
 jobs:
   build-frontend:
-    name: Build frontend
+    name: Build frontend and deploy
     runs-on: ubuntu-latest
 
     permissions:
@@ -21,12 +21,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
 
-      # - name: Use Node.js 14.x # is this needed?
-      #   uses: actions/setup-node@v1
-      #   with:
-      #     node-version: 14.x
-
-      - name: build frontend
+      - name: Build frontend
         working-directory: ./frontend
         run: yarn install && yarn run build-and-copy
 

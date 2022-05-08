@@ -4,11 +4,11 @@
 
 Really simple React app + Node express backend. Deployed in Google Cloudrun service. Resources in GCP are managed by Terraform.
 
-# Development environment
+## Development environment
 
 Use ```docker-compose up``` to run development environtment. This run three containers: frontend, backend and postgre. 
 
-# Production
+## Production
 
 React frontend is built and served by the Express backend as a single container.
 
