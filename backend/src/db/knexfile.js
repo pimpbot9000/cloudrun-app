@@ -21,7 +21,7 @@ module.exports = {
   },
   
   production: {
-    client: 'pg',
+    client: 'postgresql',
     connection: {
       //socketPath: '/cloudsql/gybsyregister:europe-west6:main-instance3',
       host: '/cloudsql/gybsyregister:europe-west6:main-instance3',

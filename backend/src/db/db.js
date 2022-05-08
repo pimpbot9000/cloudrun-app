@@ -12,6 +12,6 @@ const createUnixSocketPool = async () => {
     // keep secrets safe.
     return await knex(knexfile);
   }
-db = await createUnixSocketPool()
 
-module.exports = db
+
+module.exports = createUnixSocketPool
