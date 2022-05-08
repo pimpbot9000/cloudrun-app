@@ -5,19 +5,11 @@ const cors = require('cors')
 const app = express()
 const personsRouter = require('./src/routes/persons')
 const healthRouter = require('./src/routes/health')
-const createUnixSocketPool = require('./src/db/db')
+const db = require('./src/db/db')
 
-let db = null
-
-const createDb = async () => {
-    db = await createUnixSocketPool()
-    db.migrate.latest()
-}
-
-createDb()
 
 // run migrations when the app starts
-
+db.migrate.latest()
 
 const PORT = process.env.PORT || 8080
 

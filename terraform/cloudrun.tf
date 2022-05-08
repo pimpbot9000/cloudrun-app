@@ -10,7 +10,7 @@ resource "google_project_service" "containerregistry_api" {
 
 resource "google_project_service" "cloudbuild_api" {
   service = "cloudbuild.googleapis.com"
-  disable_on_destroy = true
+  disable_on_destroy = false
 }
 
 # Required by cloud run service
