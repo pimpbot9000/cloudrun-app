@@ -4,7 +4,7 @@ resource "google_project_service" "sqladmin_api" {
 }
 
 resource "google_sql_database_instance" "main" {
-  name = "main-instance2"
+  name = "main-instance3"
   database_version = "POSTGRES_11"
   region       = "${var.region}"
 

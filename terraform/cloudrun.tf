@@ -5,7 +5,7 @@ resource "google_container_registry" "registry" {
 
 resource "google_project_service" "containerregistry_api" {
   service = "containerregistry.googleapis.com"
-  disable_on_destroy = true
+  disable_on_destroy = false
 }
 
 resource "google_project_service" "cloudbuild_api" {
@@ -37,7 +37,7 @@ resource "google_cloud_run_service" "cloudrun_service" {
   }
 
   # Waits for the Cloud Run API to be enabled
-  depends_on = [ google_project_service.cloudrun_api ]
+  #depends_on = [ google_project_service.cloudrun_api ]
 }
 
 data "google_iam_policy" "noauth" {

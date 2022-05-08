@@ -5,10 +5,10 @@ const cors = require('cors')
 const app = express()
 const personsRouter = require('./src/routes/persons')
 const healthRouter = require('./src/routes/health')
-//const db = require('./src/db/db')
+const db = require('./src/db/db')
 
 // run migrations when the app starts
-//db.migrate.latest()
+db.migrate.latest()
 
 const PORT = process.env.PORT || 8080
 
