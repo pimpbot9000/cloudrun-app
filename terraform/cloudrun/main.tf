@@ -4,29 +4,29 @@ resource "google_container_registry" "registry" {
 }
 
 resource "google_project_service" "containerregistry_api" {
-  service = "containerregistry.googleapis.com"
+  service            = "containerregistry.googleapis.com"
   disable_on_destroy = true
 }
 
 resource "google_project_service" "cloudbuild_api" {
-  service = "cloudbuild.googleapis.com"
+  service            = "cloudbuild.googleapis.com"
   disable_on_destroy = true
 }
 
 # Required by cloud run service
 resource "google_project_service" "cloudrun_api" {
-  service = "run.googleapis.com"
+  service            = "run.googleapis.com"
   disable_on_destroy = true
 }
 
 resource "google_cloud_run_service" "cloudrun_service" {
-  name = "app"
-  location = "europe-west6"
+  name     = var.name
+  location = var.location
 
   template {
     spec {
       containers {
-        image = "eu.gcr.io/${var.project_id}/${var.image_name}:latest"        
+        image = "eu.gcr.io/${var.project_id}/${var.image_name}:latest"
       }
     }
   }
@@ -37,7 +37,7 @@ resource "google_cloud_run_service" "cloudrun_service" {
   }
 
   # Waits for the Cloud Run API to be enabled
-  depends_on = [ google_project_service.cloudrun_api ]
+  depends_on = [google_project_service.cloudrun_api]
 }
 
 data "google_iam_policy" "noauth" {
@@ -50,13 +50,13 @@ data "google_iam_policy" "noauth" {
 }
 
 resource "google_cloud_run_service_iam_policy" "noauth" {
-  location    = google_cloud_run_service.cloudrun_service.location
-  project     = google_cloud_run_service.cloudrun_service.project
-  service     = google_cloud_run_service.cloudrun_service.name
+  location = google_cloud_run_service.cloudrun_service.location
+  project  = google_cloud_run_service.cloudrun_service.project
+  service  = google_cloud_run_service.cloudrun_service.name
 
   policy_data = data.google_iam_policy.noauth.policy_data
 }
 
 output "cloudrun_url" {
-  value = google_cloud_run_service.cloudrun_service.status[0].url//.ip_address
+  value = google_cloud_run_service.cloudrun_service.status[0].url
 }
