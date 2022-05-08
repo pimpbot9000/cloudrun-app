@@ -24,6 +24,7 @@ module.exports = {
     client: 'postgresql',
     connection: {
       socketPath: '/cloudsql/gybsyregister:europe-west6:main-instance3',
+      host: '/cloudsql/gybsyregister:europe-west6:main-instance3',
       database: 'gybsyregister',
       user:     'swordfish',
       password: 'swordfish' //process.env.DB_PASSWD
