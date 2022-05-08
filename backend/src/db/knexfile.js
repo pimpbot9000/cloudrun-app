@@ -23,10 +23,10 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      host: 'gybsyregister:europe-west6:main-instance3',
+      sockerPath: '/cloudsql/gybsyregister:europe-west6:main-instance3',
       database: 'gybsyregister',
       user:     'swordfish',
-      password: process.env.DB_PASSWD
+      password: 'swordfish' //process.env.DB_PASSWD
     },
     pool: {
       min: 2,
