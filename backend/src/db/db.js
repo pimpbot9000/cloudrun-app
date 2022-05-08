@@ -10,8 +10,8 @@ const createUnixSocketPool = async () => {
     // secure - consider a more secure solution such as
     // Cloud Secret Manager (https://cloud.google.com/secret-manager) to help
     // keep secrets safe.
-    return await Knex(knexfile);
+    return await knex(knexfile);
   }
-db = createUnixSocketPool()
+db = await createUnixSocketPool()
 
 module.exports = db
