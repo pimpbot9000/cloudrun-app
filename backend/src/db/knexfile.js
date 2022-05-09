@@ -1,5 +1,5 @@
 
-module.exports = {  
+module.exports = {
 
   development: {
     client: 'postgresql',
@@ -7,7 +7,7 @@ module.exports = {
       port: 5432,
       host: 'postgres',
       database: 'knex',
-      user:     'knex',
+      user: 'knex',
       password: 'password'
     },
     pool: {
@@ -19,15 +19,14 @@ module.exports = {
       directory: 'src/db/migrations'
     }
   },
-  
+
   production: {
     client: 'postgresql',
-    connection: {
-      //socketPath: '/cloudsql/gybsyregister:europe-west6:main-instance3',
-      host: '/cloudsql/gybsyregister:europe-west6:main-instance3',
-      database: 'gybsyregister',
-      user:     'swordfish',
-      password: 'swordfish' //process.env.DB_PASSWD
+    connection: {      
+      host: process.env.DB_CONNECTION, 
+      database: process.env.DB_NAME,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWD
     },
     pool: {
       min: 2,

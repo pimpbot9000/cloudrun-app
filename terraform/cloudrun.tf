@@ -39,7 +39,7 @@ resource "google_cloud_run_service" "cloudrun_service" {
         }
         env {
           name = "DB_USER"
-          value = swordfish
+          value = "swordfish"
         }
       }
 
