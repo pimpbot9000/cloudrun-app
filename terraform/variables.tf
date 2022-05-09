@@ -7,5 +7,5 @@ variable "image_name" {
 }
 
 variable "region" {
-  default="europe-west6"
+  default = "europe-west6"
 }
