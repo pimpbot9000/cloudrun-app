@@ -18,11 +18,6 @@ jobs:
       id-token: "write"
 
     steps:
-      - name: Test custom action in this repo
-        uses: ./github/actions/hello-world
-        with:
-          who-to-greet: "Tumppi"
-          
       - name: Test custom action in it's own repo
         id: my-action
         uses: pimpbot9000/hello-world-action@v1
@@ -33,6 +28,11 @@ jobs:
           
       - name: Check out repository code
         uses: actions/checkout@v3
+
+      - name: Test custom action in this repo
+        uses: ./github/actions/hello-world
+        with:
+          who-to-greet: "Tumppi"
 
       - name: Build frontend
         working-directory: ./frontend
