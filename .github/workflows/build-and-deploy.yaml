@@ -24,7 +24,7 @@ jobs:
         with:
           who-to-greet: "Tumppu"
       
-      - run: echo random-number ${{ steps.my-action.random-number}}
+      - run: echo random-number ${{ steps.my-action.outputs.random-number}}
           
       - name: Check out repository code
         uses: actions/checkout@v3
