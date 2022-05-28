@@ -6,9 +6,9 @@ Really simple React app + Node express backend. Deployed in Google Cloudrun serv
 
 ## Development environment
 
-Use ```docker-compose up``` to run development environtment. This run three containers: frontend, backend and postgre. 
+Use ```docker-compose up``` to run development environment. This run three containers: frontend, backend and postgres. 
 
 ## Production
 
-React frontend is built and served by the Express backend as a single container.
+React frontend is built and served by the Express backend so the whole shebang is a single container.
 
