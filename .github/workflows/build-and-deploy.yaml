@@ -23,10 +23,12 @@ jobs:
         uses: pimpbot9000/hello-world-action@v1
         with:
           who-to-greet: "Tumppu"
-      
-      - run: |
-          echo random-number ${{ steps.my-action.outputs.random-number}}
-          echo test-output ${{ steps.my-action.outputs.test-output}}
+
+      - name: Test output of custom action
+        run: |
+          echo random-number ${{ steps.my-action.outputs.random-number }}
+          echo test-output ${{ steps.my-action.outputs.test-output }}
+          echo test-output2 ${{ steps.my-action.outputs.test-output2}}
       - name: Check out repository code
         uses: actions/checkout@v3
 
