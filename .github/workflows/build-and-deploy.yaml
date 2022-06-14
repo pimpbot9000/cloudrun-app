@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Test custom action in it's own repo
         id: my-action
-        uses: pimpbot9000/hello-world-action@v1
+        uses: pimpbot9000/hello-world-action@v2
         with:
           who-to-greet: "Tumppu"
 
