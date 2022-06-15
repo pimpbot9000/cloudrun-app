@@ -65,4 +65,12 @@ jobs:
       - name: Echo url
         if: always()
         run: echo hello https://github.com/pimpbot9000/hello-world-action/blob/testing/action.yaml
+      
+      - name: Splitted lines
+        env:
+          str: |
+            "This is 
+            splitted line"
+        run: echo $str
+          
 # GCP service account uses: Cloud run admin, Cloud build service account, viewer, storage admin, service account user
