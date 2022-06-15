@@ -60,5 +60,5 @@ jobs:
 
       - name: Set annotation
         if: always()
-        run: echo "::notice title::Project ID::$(echo $IMAGE_NAME)" 
+        run: echo "::notice title=Project ID::$(echo $IMAGE_NAME)" 
 # GCP service account uses: Cloud run admin, Cloud build service account, viewer, storage admin, service account user
