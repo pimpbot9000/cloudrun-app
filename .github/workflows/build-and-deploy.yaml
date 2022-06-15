@@ -56,7 +56,10 @@ jobs:
         run: gcloud builds submit --quiet --tag "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
       
       - name: Group of log lines
+        if: always()
         run: |
+            echo "hello"
+            echo "world"
             echo "::group::My title"
             echo ${{ github.event.repository.html_url }}/tree/${{ github.event.ref }}
             echo "::endgroup::"
