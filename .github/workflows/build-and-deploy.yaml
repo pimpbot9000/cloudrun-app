@@ -67,6 +67,7 @@ jobs:
         run: echo hello https://github.com/pimpbot9000/hello-world-action/blob/testing/action.yaml
       
       - name: Splitted lines
+        if: always()
         env:
           str: |
             "This is 
