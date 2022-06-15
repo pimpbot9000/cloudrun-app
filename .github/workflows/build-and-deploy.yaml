@@ -57,5 +57,8 @@ jobs:
 
       - name: Deploy
         run: gcloud run deploy app --platform "managed" --image "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest" --region "europe-west6"
-        
+
+      - name: Set annotation
+        if: always()
+        run: echo "::notice title::Project ID::$(echo ${{env.PROJECT_ID}})" 
 # GCP service account uses: Cloud run admin, Cloud build service account, viewer, storage admin, service account user
