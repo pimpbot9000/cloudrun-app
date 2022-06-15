@@ -54,20 +54,15 @@ jobs:
       - name: Build and push to registry
         working-directory: ./backend
         run: gcloud builds submit --quiet --tag "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest"
-      
-      - name: Group of log lines
-        if: always()
-        run: |
-            echo "hello"
-            echo "world"
-            echo "::group::My title"
-            echo ${{ github.event.repository.html_url }}/tree/${{ github.event.ref }}
-            echo "::endgroup::"
-          
+     
       - name: Deploy
         run: gcloud run deploy app --platform "managed" --image "eu.gcr.io/$PROJECT_ID/$IMAGE_NAME:latest" --region "europe-west6"
 
       - name: Set annotation
         if: always()
         run: echo "::notice title=Project ID::$(echo $IMAGE_NAME)" 
+      
+      - name: Echo url
+        if: always()
+        run: echo hello https://github.com/pimpbot9000/hello-world-action/blob/testing/action.yaml
 # GCP service account uses: Cloud run admin, Cloud build service account, viewer, storage admin, service account user
