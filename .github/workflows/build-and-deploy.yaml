@@ -69,9 +69,8 @@ jobs:
       - name: Splitted lines
         if: always()
         env:
-          str: |
-            "This is
-            splitted line"
+          str: "This is
+            splitted line without trailing space"
         run: echo $str
           
 # GCP service account uses: Cloud run admin, Cloud build service account, viewer, storage admin, service account user
