@@ -21,10 +21,9 @@ jobs:
     steps:
       - name: Test custom action in it's own repo
         id: my-action
-        uses: pimpbot9000/hello-world-action
+        uses: pimpbot9000/hello-world-action@master
         with:
           who-to-greet: "Tumppu"
-          ref: master
 
       - name: Test output of custom action
         run: |
