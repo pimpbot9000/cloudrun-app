@@ -24,6 +24,7 @@ jobs:
         uses: pimpbot9000/hello-world-action
         with:
           who-to-greet: "Tumppu"
+          ref: master
 
       - name: Test output of custom action
         run: |
